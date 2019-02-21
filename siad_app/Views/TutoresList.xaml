@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="siad_app.Views.TutoresList"
+             xmlns:local="clr-namespace:siad_app.Views"
+             Title="Lista de Tutores">
+    <ContentPage.Content>
+        <Grid>
+            <!--configuraciones para plataforma-->
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform x:TypeArguments="GridLength">
+                            <On Platform="iOS">44</On>
+                            <On Platform="Android">44</On>
+                        </OnPlatform>
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>                
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0,0,0,0"></OnPlatform>
+            </Grid.Padding>
+            
+            
+            <!--bùsqueda-->
+            <SearchBar x:Name="searchBar" HorizontalOptions="End" Grid.Row="0" Text="{Binding SearchText}"
+                       SearchCommand="{Binding SearchByName}"/>
+            
+            <Button x:Name="btnGetByName" Command="{Binding SearchByName}" HorizontalOptions="End" VerticalOptions="Start"
+                    Grid.Row="0" Text="Por Nombre"/>
+            <Button x:Name="btnGetAll" Command="{Binding AllTutores}" HorizontalOptions="Start" VerticalOptions="Start"
+                    Grid.Row="0" Text="Todos"/>
+            
+            <ListView Grid.Row="1" x:Name="lstTutores" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                      ItemsSource="{Binding TutorList}" RowHeight="80">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <local:TutorTemplate/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            
+            <ActivityIndicator x:Name="running" Grid.RowSpan="2" 
+                               IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}"
+                               VerticalOptions="Center" HorizontalOptions="Center"
+                               BackgroundColor=" Transparent"/>
+            
+            
+            
+        </Grid>
+        
+        
+      
+    </ContentPage.Content>
+</ContentPage>
