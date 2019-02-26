@@ -1,0 +1,7 @@
+﻿using System;
+namespace siad_app.Services
+{
+    public interface ITextToSpeech
+    {
+    }
+}
