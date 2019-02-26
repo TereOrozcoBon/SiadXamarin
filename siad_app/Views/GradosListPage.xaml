@@ -1,5 +1,33 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="siad_app.Views.GradosListPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="siad_app.Views.GradosListPage"
+             Title="Grados Académicos">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="+" Clicked="OnGradosAdd"><!--hacer el command en la view model-->
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="plus.png"/>
+                </OnPlatform>
+            </ToolbarItem.Icon>
+                
+        </ToolbarItem>
+            
+    </ContentPage.ToolbarItems>
+    
+    
+    
+    <ListView x:Name="lstGrados" Margin="20" ItemSelected="OnGradoSelected">
+        <!--aquí tener una lista como template-->
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Margin="20,0,0,0" Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <!--aqui lo está enlazando al modelo, se requiere que sea a la videmodel-->
+                        <Label Text="{Binding Nombre}" VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand"/>
+                        <Image Source="check.png" IsVisible="{Binding Cedula}" HorizontalOptions="End"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
 </ContentPage>

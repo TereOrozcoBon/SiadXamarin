@@ -1,5 +1,22 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="siad_app.Views.GradoPage">
-    <ContentPage.Content>
-    </ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="siad_app.Views.GradoPage"
+             Title="{Binding Nombre}">
+    <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+        
+        
+        <Label Text="Tipo de Grado:"/>
+        <Entry Text="{Binding Tipo}"/>
+        
+        <Label Text="Nombre:"/>
+        <Entry Text="{Binding Nombre}"/>
+         
+        <Label Text="Titulado:"/>
+        <Switch IsToggled="{Binding Titulado}"/>
+        
+        <Button Text="Guardar" Clicked="OnSave_Clicked"/>
+        <Button Text="Eliminar" Clicked="OnDelete_Clicked"/>
+        <Button Text="Cancelar" Clicked="OnCancel_Clicked"/>
+        <Button Text="Speak" Clicked="OnSpeak_Clicked"/>
+        
+    </StackLayout>
 </ContentPage>
